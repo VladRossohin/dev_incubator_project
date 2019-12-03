@@ -1,6 +1,6 @@
 import java.sql.*;
 
-public class UserJdbc {
+public class AccountJdbc {
     static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
     static final String DATABASE_URL = "jdbc:mysql://localhost:3306/dev_incubator_database";
 
@@ -23,19 +23,19 @@ public class UserJdbc {
         statement = connection.createStatement();
 
         String sql;
-        sql = "SELECT * FROM user WHERE userid=2;";
+        sql = "SELECT * FROM account;";
         ResultSet resultSet = statement.executeQuery(sql);
 
         System.out.println("Retrieving data from database...");
-        System.out.println("\nUsers:");
+        System.out.println("\nAccounts:");
         while (resultSet.next()) {
-            int id = resultSet.getInt("userid");
-            String name = resultSet.getString("name");
-            String sureName = resultSet.getString("sureName");
+            int id = resultSet.getInt("accountid");
+            String account = resultSet.getString("account");
+            String userId = resultSet.getString("userid");
             System.out.println("\n==================\n");
             System.out.println("id: " + id);
-            System.out.println("Name: " + name);
-            System.out.println("Surname: " + sureName);
+            System.out.println("Account: " + account);
+            System.out.println("UserId: " + userId);
         }
 
         System.out.println("Closing connection and releasing resources...");
